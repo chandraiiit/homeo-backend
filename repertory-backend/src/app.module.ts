@@ -8,6 +8,8 @@ import { CasesModule } from './cases/cases.module';
 import { RubricsModule } from './rubrics/rubrics.module';
 import { RemediesModule } from './remedies/remedies.module';
 import { RepertorizationModule } from './repertorization/repertorization.module';
+import { Rubric } from './rubrics/rubric.entity';
+import { RubricRemedy } from './entities/rubric-remedy.entity';
 
 @Module({
   imports: [
@@ -19,7 +21,8 @@ import { RepertorizationModule } from './repertorization/repertorization.module'
       password: 'postgres',
       database: 'homeo',
       autoLoadEntities: true,
-      synchronize: true, // turn off in production
+      synchronize: true,
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     UsersModule,
     AuthModule,

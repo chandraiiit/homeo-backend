@@ -14,7 +14,9 @@ export class RepertorizationController {
   ) {}
 
   @Post('analyze')
-async analyze(rubricIds: number[]): Promise<RepertorizationResult[]> {
+  async analyze(@Body() body: { rubricIds: number[] }): Promise<RepertorizationResult[]> {
+    const { rubricIds } = body;
+    console.log('Received rubricIds:', rubricIds);
     if (!rubricIds || rubricIds.length === 0) {
       throw new BadRequestException(
         'At least one rubricId must be provided',
