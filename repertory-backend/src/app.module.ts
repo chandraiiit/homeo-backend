@@ -16,8 +16,8 @@ import { RepertorizationModule } from './repertorization/repertorization.module'
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'yourpassword',
-      database: 'repertory_db',
+      password: 'postgres',
+      database: 'homeo',
       autoLoadEntities: true,
       synchronize: true, // turn off in production
     }),
