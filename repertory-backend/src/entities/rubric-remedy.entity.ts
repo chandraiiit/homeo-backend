@@ -1,18 +1,32 @@
-import { Remedy } from "src/remedies/remedy.entity";
-import { Rubric } from "src/rubrics/rubric.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Remedy } from 'src/entities/remedy.entity';
+import { Rubric } from 'src/entities/rubric.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+  Unique,
+} from 'typeorm';
 
-@Entity()
+@Entity('rubric_remedy')
+@Unique(['rubric', 'remedy'])
 export class RubricRemedy {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Rubric)
+  @ManyToOne(() => Rubric, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'rubric_id' })
   rubric: Rubric;
 
-  @ManyToOne(() => Remedy)
+  @ManyToOne(() => Remedy, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'remedy_id' })
   remedy: Remedy;
 
-  @Column()
-  grade: number;
+  @Column({ type: 'int' })
+  grade: number; // 1–3
 }
