@@ -31,8 +31,8 @@ export class AnalysisService {
       .where('rr.rubric_id IN (:...rubricIds)', { rubricIds: uniqueIds })
       .groupBy('remedy.id')
       .addGroupBy('remedy.name')
-      .orderBy('totalScore', 'DESC')
-      .addOrderBy('matchedRubrics', 'DESC')
+      .orderBy('"totalScore"', 'DESC')
+      .addOrderBy('"matchedRubrics"', 'DESC')
       .getRawMany();
 
     const totalSelected = uniqueIds.length;
