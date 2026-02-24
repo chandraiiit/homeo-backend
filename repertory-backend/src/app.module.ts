@@ -4,6 +4,7 @@ import { ChapterModule } from './modules/chapter.module';
 import { RubricModule } from './modules/rubric.module';
 import { RemedyModule } from './modules/remedy.module';
 import { AnalysisModule } from './modules/analyze.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -20,6 +21,7 @@ import { AnalysisModule } from './modules/analyze.module';
     RubricModule,
     RemedyModule,
     AnalysisModule,
+    AuthModule
   ],
 })
 export class AppModule {}
